@@ -1,0 +1,11 @@
+port: 8010
+spring:
+  application:
+    name: serie-service
+  mongodb:
+    embedded:
+      version: 4.0.2
+  data:
+    mongodb:
+      database: netflix
+      port: 27017
