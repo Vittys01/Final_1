@@ -4,7 +4,9 @@ import com.dh.movieservice.api.service.MovieService;
 import com.dh.movieservice.domain.model.Movie;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MovieListener {
 
     private final MovieService service;
