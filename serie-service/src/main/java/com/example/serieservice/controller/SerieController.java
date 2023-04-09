@@ -4,15 +4,11 @@ import com.example.serieservice.model.Serie;
 import com.example.serieservice.service.SerieService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
-/**
- * @author vaninagodoy
- */
 
 @RestController
-@RequestMapping("/api/v1/series")
+@RequestMapping("/series")
 public class SerieController {
 
     private final SerieService serieService;
