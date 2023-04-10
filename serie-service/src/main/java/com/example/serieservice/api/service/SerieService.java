@@ -1,4 +1,4 @@
-package com.example.serieservice.service;
+package com.example.serieservice.api.service;
 
 import com.example.serieservice.model.Serie;
 import com.example.serieservice.repository.SerieRepository;

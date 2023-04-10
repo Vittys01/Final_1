@@ -1,10 +1,12 @@
-package com.example.serieservice.service.queue;
+package com.example.serieservice.api.service.queue;
 
 import com.example.serieservice.model.Serie;
-import com.example.serieservice.service.SerieService;
+import com.example.serieservice.api.service.SerieService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SerieListener {
 
     private final SerieService service;

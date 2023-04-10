@@ -1,7 +1,8 @@
-package com.example.serieservice.controller;
+package com.example.serieservice.api.controller;
 
+import com.example.serieservice.api.service.SerieService;
+import com.example.serieservice.api.service.queue.SerieListener;
 import com.example.serieservice.model.Serie;
-import com.example.serieservice.service.SerieService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -13,8 +14,11 @@ public class SerieController {
 
     private final SerieService serieService;
 
-    public SerieController(SerieService serieService) {
+    private final SerieListener serieListener;
+
+    public SerieController(SerieService serieService, SerieListener serieListener) {
         this.serieService = serieService;
+        this.serieListener = serieListener;
     }
 
     @GetMapping
@@ -30,7 +34,7 @@ public class SerieController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public String create(@RequestBody Serie serie) {
-        serieService.create(serie);
+        serieListener.receive(serie);
         return serie.getId();
     }
 }
