@@ -17,19 +17,41 @@ spring:
           uri: lb://catalog-service
           predicates:
             - Path=/catalog/**
+          filters:
+            - StripPrefix=2
+            - name: CircuitBreaker
+              args:
+                name: catalogService
+                fallbackUri: forward:/fallback/catalog
         - id: movie-service
           uri: lb://movie-service
           predicates:
             - Path=/movies/**
+          filters:
+            - StripPrefix=2
+            - name: CircuitBreaker
+              args:
+                name: moviesService
+                fallbackUri: forward:/fallback/movies
         - id: serie-service
           uri: lb://serie-service
           predicates:
             - Path=/series/**
+          filters:
+            - StripPrefix=2
+            - name: CircuitBreaker
+              args:
+                name: seriesService
+                fallbackUri: forward:/fallback/series
 
 info:
   app:
     name: ${spring.application.name}
-
+queue:
+  movie:
+    name: MovieQueue
+  serie:
+    name: SerieQueue
 eureka:
   client:
     registerWithEureka: false
